@@ -76,10 +76,10 @@ Current target repository:
 Recommended setup:
 
 1. Push this project to `https://github.com/CoreyFQR/coreyfoo.github.io`.
-3. On GitHub, open the repository settings.
-4. Go to **Pages**.
-5. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-6. Push to `main` or run the workflow manually from the **Actions** tab.
+2. On GitHub, open the repository settings.
+3. Go to **Pages**.
+4. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+5. Push to `main` or run the workflow manually from the **Actions** tab.
 
 If the repository is named `CoreyFQR.github.io`, the site will publish at `https://coreyfqr.github.io/`.
 
