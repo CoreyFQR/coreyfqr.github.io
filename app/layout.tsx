@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Quanrui Fu / Corey Fu",
+  title: "Corey Foo Quan Rui",
   description:
-    "Quanrui Fu / Corey Fu 的个人作品集。保持思考，保持学习，保持创造。",
+    "Portfolio of Corey Foo Quan Rui, an engineer, researcher, and maker focused on creativity and learning.",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

@@ -1,12 +1,20 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Youtube } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-export type Locale = "zh" | "en";
-
-export type Project = {
+export type Experience = {
   title: string;
-  description: string;
-  tags: string[];
+  organization?: string;
+  organizationUrl?: string;
+  period: string;
+  bullets: string[];
+};
+
+export type Education = {
+  school: string;
+  schoolUrl?: string;
+  degree: string;
+  period: string;
+  location: string;
 };
 
 export type ContactLink = {
@@ -16,160 +24,95 @@ export type ContactLink = {
 };
 
 export const profile = {
-  // Replace these values when you want to update your name or photo.
-  name: "Quanrui Fu / Corey Fu",
+  // Edit these values when you want to update your hero section.
+  name: "Corey Foo Quan Rui",
+  slogan: "Keep thinking. Keep learning. Keep creating.",
+  email: "quanrui.fu@foxmail.com",
   photo: "/profile_photo.jpg",
-  photoAlt: "Quanrui Fu standing by the waterfront",
+  photoAlt: "Corey Foo Quan Rui",
 };
 
-export const portfolioContent = {
-  zh: {
-    languageName: "中文",
-    languageToggleLabel: "切换语言",
-    navAriaLabel: "主导航",
-    eyebrow: "个人作品集",
-    slogan: "保持思考。保持学习。保持创造。",
-    intro: "一个持续探索软件、设计与想法的创作者，正在把学习转化为有用的作品。",
-    primaryCta: "查看作品",
-    secondaryCta: "联系我",
-    selectedWorkLabel: "项目占位",
-    footerNote: "保持思考。保持学习。保持创造。",
-    navLinks: [
-      { label: "关于", href: "#about" },
-      { label: "项目", href: "#projects" },
-      { label: "技能", href: "#skills" },
-      { label: "联系", href: "#contact" },
-    ],
-    about: {
-      // 之后可以把这里替换成更具体的个人介绍。
-      heading: "关于我",
-      body: "这里是一个简单的个人介绍占位段落。之后可以写下我的背景、兴趣方向、正在学习的内容，以及我希望通过作品表达和解决的问题。",
-    },
-    projects: [
-      // 项目准备好后，把这些占位卡片替换成真实项目。
-      {
-        title: "项目标题一",
-        description: "未来项目、案例研究或实验的简短介绍占位。",
-        tags: ["标签", "工具", "方向"],
-      },
-      {
-        title: "项目标题二",
-        description: "用一句话说明项目目标、我的角色或最终成果。",
-        tags: ["研究", "构建", "设计"],
-      },
-      {
-        title: "项目标题三",
-        description: "准备添加更多内容时，可以用这张卡片放另一个项目。",
-        tags: ["学习", "原型", "想法"],
-      },
-    ] satisfies Project[],
-    skills: [
-      // 直接编辑这个数组来更新技能标签。
-      "TypeScript",
-      "Next.js",
-      "React",
-      "Tailwind CSS",
-      "产品思维",
-      "设计系统",
-      "研究",
-      "问题解决",
-    ],
-    contactLinks: [
-      // 把 href 替换成你的真实邮箱、GitHub、LinkedIn 或其他链接。
-      { label: "邮箱", href: "mailto:quanrui.fu@foxmail.com", icon: Mail },
-      { label: "GitHub", href: "https://github.com/CoreyFQR", icon: Github },
-      {
-        label: "LinkedIn",
-        href: "https://www.linkedin.com/in/quanrui-fu-b2b694324/",
-        icon: Linkedin,
-      },
-    ] satisfies ContactLink[],
-  },
-  en: {
-    languageName: "English",
-    languageToggleLabel: "Switch language",
-    navAriaLabel: "Main navigation",
-    eyebrow: "Personal Portfolio",
-    slogan: "Keep thinking. Keep learning. Keep creating.",
-    intro:
-      "A curious builder exploring software, design, and ideas that turn learning into useful things.",
-    primaryCta: "View Work",
-    secondaryCta: "Contact",
-    selectedWorkLabel: "Project Placeholder",
-    footerNote: "Keep thinking. Keep learning. Keep creating.",
-    navLinks: [
-      { label: "About", href: "#about" },
-      { label: "Projects", href: "#projects" },
-      { label: "Skills", href: "#skills" },
-      { label: "Contact", href: "#contact" },
-    ],
-    about: {
-      // Replace this paragraph with a more personal introduction later.
-      heading: "About",
-      body: "This is a simple placeholder paragraph for a personal introduction. Later, it can describe my background, interests, current learning direction, and the kinds of problems I want to explore through my work.",
-    },
-    projects: [
-      // Replace these placeholder cards with real projects when they are ready.
-      {
-        title: "Project Title One",
-        description:
-          "A short placeholder summary for a future project, case study, or experiment.",
-        tags: ["Tag", "Tool", "Focus"],
-      },
-      {
-        title: "Project Title Two",
-        description:
-          "A concise description can explain the goal, role, or result in one sentence.",
-        tags: ["Research", "Build", "Design"],
-      },
-      {
-        title: "Project Title Three",
-        description:
-          "Use this card for another project once you are ready to add more detail.",
-        tags: ["Learning", "Prototype", "Idea"],
-      },
-    ] satisfies Project[],
-    skills: [
-      // Edit this list to keep the skills section up to date.
-      "TypeScript",
-      "Next.js",
-      "React",
-      "Tailwind CSS",
-      "Product Thinking",
-      "Design Systems",
-      "Research",
-      "Problem Solving",
-    ],
-    contactLinks: [
-      // Replace the href values with your real links when you are ready.
-      { label: "Email", href: "mailto:quanrui.fu@foxmail.com", icon: Mail },
-      { label: "GitHub", href: "https://github.com/CoreyFQR", icon: Github },
-      {
-        label: "LinkedIn",
-        href: "https://www.linkedin.com/in/quanrui-fu-b2b694324/",
-        icon: Linkedin,
-      },
-    ] satisfies ContactLink[],
-  },
-} satisfies Record<
-  Locale,
-  {
-    languageName: string;
-    languageToggleLabel: string;
-    navAriaLabel: string;
-    eyebrow: string;
-    slogan: string;
-    intro: string;
-    primaryCta: string;
-    secondaryCta: string;
-    selectedWorkLabel: string;
-    footerNote: string;
-    navLinks: { label: string; href: string }[];
-    about: { heading: string; body: string };
-    projects: Project[];
-    skills: string[];
-    contactLinks: ContactLink[];
-  }
->;
+export const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Project Experience", href: "#project-experience" },
+  { label: "Education", href: "#education" },
+  { label: "Contact", href: "#contact" },
+];
 
-export const locales: Locale[] = ["zh", "en"];
+export const about =
+  "I'm an engineer, researcher, and maker passionate about building tools for creativity and learning. Currently a graduate student at Nanyang Technological University in Singapore, majoring in Computer Control & Automation.";
+
+export const experiences: Experience[] = [
+  {
+    title:
+      "Millimeter-Wave Radar Point Cloud Enhancement Based on Low-Rank Optimization",
+    organization: "Nanyang Technological University",
+    organizationUrl: "https://www.ntu.edu.sg/",
+    period: "Jan 2025 - Jan 2026",
+    bullets: [
+      "Built an experimental platform based on a Texas Instruments cascaded millimeter-wave radar evaluation board, completed firmware connection configuration, and collected test-environment data with Lua scripts. For the problem of overly sparse point clouds and weak target loss in millimeter-wave radar perception, systematically analyzed the limitations of traditional CFAR and threshold filtering, then defined the goal of improving point cloud quality through low-rank optimization.",
+      "Extracted raw radar Range-Doppler Maps (RDMs) from captured data and used them as the optimization target. In MATLAB, organized RDMs into optimizable matrix and tensor forms, completing data cleaning, normalization, dimension alignment, and visualization with Range-Doppler and Range-Azimuth heatmaps. Built a stable and reproducible input-output interface.",
+      "Designed a low-rank optimization enhancement strategy by leveraging the spatial, temporal, and channel correlations of target echoes. Introduced low-rank constraints to iteratively reconstruct RDMs while suppressing random noise and clutter interference, producing enhanced spectral representations.",
+      "Mapped enhanced spectral results back into the point-cloud generation workflow and compared them with original CFAR and threshold outputs under the same conditions. Evaluated changes in point cloud density, continuity, and stability through point-count statistics and structural visualization.",
+    ],
+  },
+  {
+    title: "2D LiDAR SLAM and Path Planning for a Mobile Robot",
+    organization: "Technological University Dublin",
+    organizationUrl: "https://www.tudublin.ie/",
+    period: "Oct 2022 - May 2023",
+    bullets: [
+      "Built a SLAM environment on ROS using the Slamtec RPLiDAR A1M8, a mechanical optical LiDAR with 360-degree scanning, to collect laser data. Completed environment configuration and driver deployment on PC and Raspberry Pi platforms, including Ubuntu MATE, ROS1, RViz, and rosbag recording and playback.",
+      "Implemented, compared, and debugged two SLAM approaches: Gmapping, a particle-filter grid-mapping method that depends on sensors such as IMU and odometry, and Hector SLAM, a scan-matching-based laser odometry method. Resolved missing TF transformations and RViz frame-drop or queue-overflow issues by completing the static transform chain among map, odom, base_link, and laser frames, then analyzed the strengths, limitations, and tradeoffs of each method.",
+      "Saved generated occupancy grid maps and implemented two types of path planning on top of the maps: full coverage path planning (FCPP), useful for scenarios such as cleaning robots, and shortest-path planning with A* and Dijkstra. Compared path density and coverage performance by configuring robot and tool radius parameters.",
+      "Constructed both small-scale obstacle fields and large-scale floor test environments. Collected and evaluated mapping performance and measurement accuracy using a single LiDAR sensor under Hector SLAM, quantified displacement and wall dimensions with a map resolution of 0.05 m per pixel, summarized error sources such as scan range limits, movement speed and acceleration, target material, and boundary overlap caused by the absence of loop closure, and proposed improvement directions.",
+    ],
+  },
+  {
+    title: "RoboMaster 2021 University Technical Challenge (RMUT)",
+    period: "Nov 2020 - Aug 2021",
+    bullets: [
+      "Used SolidWorks for vehicle body structural modeling, assembly, and lightweight design. Optimized plates, brackets, and connection methods based on load paths and mounting references. Processed aluminum profiles and acrylic components with CNC machining using PowerMILL and rapid 3D-printed prototyping. Organized dimensional inspection and assembly-error review, then iterated hole positions, clearances, and tolerance fits to improve assembly consistency and maintainability.",
+      "Conducted kinematic simulation and interference checks, and worked with the electrical team to optimize the overall vehicle layout, including module placement, assembly sequence, fastening standards, wiring and pneumatic routing, and anti-loosening measures. Reduced weight and improved reliability while maintaining structural strength and stiffness, ensuring the vehicle met competition rules and engineering delivery requirements.",
+    ],
+  },
+];
+
+export const education: Education[] = [
+  {
+    school: "Nanyang Technological University",
+    schoolUrl: "https://www.ntu.edu.sg/",
+    degree: "Master of Science in Computer Control & Automation",
+    period: "Aug 2024 - Jun 2026 (Expected)",
+    location: "Singapore",
+  },
+  {
+    school: "Technological University Dublin",
+    schoolUrl: "https://www.tudublin.ie/",
+    degree: "Bachelor of Engineering (Honours) in Mechanical Engineering",
+    period: "Aug 2022 - Jun 2023",
+    location: "Dublin, Ireland",
+  },
+  {
+    school: "Nanjing Tech University",
+    degree: "Bachelor of Engineering in Mechanical Engineering",
+    period: "Sep 2019 - Jul 2023",
+    location: "Nanjing, China",
+  },
+];
+
+export const contactLinks: ContactLink[] = [
+  { label: "Email", href: "mailto:quanrui.fu@foxmail.com", icon: Mail },
+  { label: "GitHub", href: "https://github.com/CoreyFQR", icon: Github },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@coreystudio9194",
+    icon: Youtube,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/quanrui-fu-b2b694324/",
+    icon: Linkedin,
+  },
+];
