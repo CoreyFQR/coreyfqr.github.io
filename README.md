@@ -1,2 +1,3 @@
-coreyfqr.github.io
-Personal academic website for Corey Foo Quan Rui.
+# coreyfqr.github.io
+
+Personal website for Corey Foo Quan Rui.
