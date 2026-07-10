@@ -1,5 +1,11 @@
 import Image from "next/image";
-import { ArrowRight, CalendarDays, ExternalLink, Mail, MapPin } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarDays,
+  ExternalLink,
+  Mail,
+  MapPin,
+} from "lucide-react";
 import {
   about,
   contactLinks,
@@ -40,35 +46,35 @@ export function PortfolioPage() {
 
       <section
         id="home"
-        className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-6xl flex-col justify-center px-6 py-16 sm:py-20"
+        className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-6xl flex-col items-center justify-center px-6 py-16 text-center sm:py-20"
       >
-        <div className="grid items-center gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-          <div className="relative h-36 w-36 overflow-hidden rounded-full border border-line bg-white shadow-soft sm:h-44 sm:w-44">
+        <div className="flex w-full max-w-4xl flex-col items-center">
+          <div className="relative h-32 w-32 overflow-hidden rounded-full border border-line bg-white shadow-soft sm:h-40 sm:w-40">
             <Image
               src={photoSrc}
               alt={profile.photoAlt}
               fill
               priority
-              sizes="176px"
+              sizes="160px"
               className="object-cover"
             />
           </div>
 
-          <div>
+          <div className="mt-10">
             <h1 className="max-w-4xl text-5xl font-semibold leading-[1.05] text-ink sm:text-6xl">
               {profile.name}
             </h1>
-            <p className="mt-6 max-w-2xl text-2xl leading-9 text-ink sm:text-3xl">
+            <p className="mx-auto mt-6 max-w-3xl text-2xl leading-9 text-ink sm:text-3xl">
               {profile.slogan}
             </p>
             <a
               href={`mailto:${profile.email}`}
-              className="mt-6 inline-flex items-center gap-2 text-lg text-muted transition hover:text-moss"
+              className="mt-6 inline-flex items-center justify-center gap-2 text-lg text-muted transition hover:text-moss"
             >
               <Mail aria-hidden="true" className="h-5 w-5" />
               {profile.email}
             </a>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <a
                 href="#project-experience"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:bg-moss focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2 focus:ring-offset-paper"
@@ -89,7 +95,7 @@ export function PortfolioPage() {
       </section>
 
       <Section id="about" title="About">
-        <p className="max-w-3xl text-xl leading-9 text-muted">{about}</p>
+        <p className="max-w-none text-xl leading-9 text-muted">{about}</p>
       </Section>
 
       <Section id="project-experience" title="Project Experience">
@@ -99,22 +105,20 @@ export function PortfolioPage() {
               key={experience.title}
               className="rounded-lg border border-line bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-moss/40 hover:shadow-soft sm:p-8"
             >
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                <div>
-                  <h3 className="text-2xl font-semibold leading-tight text-ink">
-                    {experience.title}
-                  </h3>
-                  {experience.organization ? (
-                    <a
-                      href={experience.organizationUrl}
-                      className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-moss transition hover:text-ink"
-                    >
-                      {experience.organization}
-                      <ExternalLink aria-hidden="true" className="h-4 w-4" />
-                    </a>
-                  ) : null}
-                </div>
-                <p className="inline-flex items-center gap-2 text-sm font-medium text-muted">
+              <div>
+                <h3 className="text-2xl font-semibold leading-tight text-ink">
+                  {experience.title}
+                </h3>
+                {experience.organization ? (
+                  <a
+                    href={experience.organizationUrl}
+                    className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-moss transition hover:text-ink"
+                  >
+                    {experience.organization}
+                    <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                  </a>
+                ) : null}
+                <p className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-muted">
                   <CalendarDays aria-hidden="true" className="h-4 w-4" />
                   {experience.period}
                 </p>
@@ -137,34 +141,36 @@ export function PortfolioPage() {
       </Section>
 
       <Section id="education" title="Education Background">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="space-y-4">
           {education.map((item) => (
             <article
               key={`${item.school}-${item.degree}`}
-              className="rounded-lg border border-line bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-moss/40 hover:shadow-soft"
+              className="rounded-lg border border-line bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-moss/40 hover:shadow-soft sm:p-8"
             >
               {item.schoolUrl ? (
                 <a
                   href={item.schoolUrl}
-                  className="inline-flex items-start gap-2 text-xl font-semibold leading-tight text-ink transition hover:text-moss"
+                  className="inline-flex items-start gap-2 text-2xl font-semibold leading-tight text-ink transition hover:text-moss"
                 >
                   {item.school}
                   <ExternalLink aria-hidden="true" className="mt-1 h-4 w-4" />
                 </a>
               ) : (
-                <h3 className="text-xl font-semibold leading-tight text-ink">
+                <h3 className="text-2xl font-semibold leading-tight text-ink">
                   {item.school}
                 </h3>
               )}
-              <p className="mt-4 leading-7 text-muted">{item.degree}</p>
-              <p className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-muted">
-                <CalendarDays aria-hidden="true" className="h-4 w-4" />
-                {item.period}
-              </p>
-              <p className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-muted">
-                <MapPin aria-hidden="true" className="h-4 w-4" />
-                {item.location}
-              </p>
+              <p className="mt-4 text-lg leading-7 text-muted">{item.degree}</p>
+              <div className="mt-5 flex flex-col gap-3 text-sm font-medium text-muted sm:flex-row sm:flex-wrap sm:gap-6">
+                <p className="inline-flex items-center gap-2">
+                  <CalendarDays aria-hidden="true" className="h-4 w-4" />
+                  {item.period}
+                </p>
+                <p className="inline-flex items-center gap-2">
+                  <MapPin aria-hidden="true" className="h-4 w-4" />
+                  {item.location}
+                </p>
+              </div>
             </article>
           ))}
         </div>
