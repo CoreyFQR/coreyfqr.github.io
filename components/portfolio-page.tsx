@@ -109,19 +109,21 @@ export function PortfolioPage() {
                 <h3 className="text-2xl font-semibold leading-tight text-ink">
                   {experience.title}
                 </h3>
-                {experience.organization ? (
-                  <a
-                    href={experience.organizationUrl}
-                    className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-moss transition hover:text-ink"
-                  >
-                    {experience.organization}
-                    <ExternalLink aria-hidden="true" className="h-4 w-4" />
-                  </a>
-                ) : null}
-                <p className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-muted">
-                  <CalendarDays aria-hidden="true" className="h-4 w-4" />
-                  {experience.period}
-                </p>
+                <div className="mt-3 space-y-2">
+                  {experience.organization ? (
+                    <a
+                      href={experience.organizationUrl}
+                      className="flex w-fit items-center gap-2 text-sm font-medium text-moss transition hover:text-ink"
+                    >
+                      {experience.organization}
+                      <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                    </a>
+                  ) : null}
+                  <p className="flex items-center gap-2 text-sm font-medium text-muted">
+                    <CalendarDays aria-hidden="true" className="h-4 w-4" />
+                    {experience.period}
+                  </p>
+                </div>
               </div>
 
               <ul className="mt-6 space-y-4">
