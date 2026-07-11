@@ -2,6 +2,7 @@ import Image from "next/image";
 import {
   ArrowRight,
   CalendarDays,
+  ChevronDown,
   ExternalLink,
   Mail,
   MapPin,
@@ -15,14 +16,22 @@ import {
   profile,
 } from "@/lib/portfolio-data";
 import { Section } from "@/components/section";
+import { TypewriterText } from "@/components/typewriter-text";
 
 export function PortfolioPage() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const photoSrc = `${basePath}${profile.photo}`;
 
   return (
-    <main>
-      <header className="sticky top-0 z-20 border-b border-line/80 bg-paper/90 backdrop-blur">
+    <main className="relative isolate overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      >
+        <div className="signal-field absolute inset-0 opacity-80" />
+      </div>
+
+      <header className="sticky top-0 z-20 border-b border-line/80 bg-paper/75 backdrop-blur-xl">
         <nav
           aria-label="Main navigation"
           className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4"
@@ -49,7 +58,7 @@ export function PortfolioPage() {
         className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-6xl flex-col items-center justify-center px-6 py-16 text-center sm:py-20"
       >
         <div className="flex w-full max-w-4xl flex-col items-center">
-          <div className="relative h-32 w-32 overflow-hidden rounded-full border border-line bg-white shadow-soft sm:h-40 sm:w-40">
+          <div className="relative h-32 w-32 overflow-hidden rounded-full border border-line bg-white shadow-soft ring-8 ring-white/50 sm:h-40 sm:w-40">
             <Image
               src={photoSrc}
               alt={profile.photoAlt}
@@ -64,9 +73,10 @@ export function PortfolioPage() {
             <h1 className="max-w-4xl text-5xl font-semibold leading-[1.05] text-ink sm:text-6xl">
               {profile.name}
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-2xl leading-9 text-ink sm:text-3xl">
-              {profile.slogan}
-            </p>
+            <TypewriterText
+              text={profile.slogan}
+              className="mx-auto mt-6 block min-h-9 max-w-3xl text-2xl leading-9 text-ink sm:text-3xl"
+            />
             <a
               href={`mailto:${profile.email}`}
               className="mt-6 inline-flex items-center justify-center gap-2 text-lg text-muted transition hover:text-moss"
@@ -77,7 +87,7 @@ export function PortfolioPage() {
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <a
                 href="#project-experience"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:bg-moss focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2 focus:ring-offset-paper"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-moss focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2 focus:ring-offset-paper"
               >
                 View Experience
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -94,37 +104,47 @@ export function PortfolioPage() {
         </div>
       </section>
 
-      <Section id="about" title="About">
+      <Section id="about" title="01. About">
         <p className="max-w-none text-xl leading-9 text-muted">{about}</p>
       </Section>
 
-      <Section id="project-experience" title="Project Experience">
+      <Section id="project-experience" title="02. Project Experience">
         <div className="space-y-6">
           {experiences.map((experience) => (
-            <article
+            <details
               key={experience.title}
-              className="rounded-lg border border-line bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-moss/40 hover:shadow-soft sm:p-8"
+              className="group relative rounded-lg border border-line bg-white/80 p-6 pl-8 shadow-sm backdrop-blur transition duration-200 open:bg-white/95 hover:-translate-y-1 hover:border-moss/40 hover:bg-white/95 hover:shadow-soft sm:p-8 sm:pl-10"
             >
-              <div>
-                <h3 className="text-2xl font-semibold leading-tight text-ink">
-                  {experience.title}
-                </h3>
-                <div className="mt-3 space-y-2">
-                  {experience.organization ? (
-                    <a
-                      href={experience.organizationUrl}
-                      className="flex w-fit items-center gap-2 text-sm font-medium text-moss transition hover:text-ink"
-                    >
-                      {experience.organization}
-                      <ExternalLink aria-hidden="true" className="h-4 w-4" />
-                    </a>
-                  ) : null}
-                  <p className="flex items-center gap-2 text-sm font-medium text-muted">
-                    <CalendarDays aria-hidden="true" className="h-4 w-4" />
-                    {experience.period}
-                  </p>
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute bottom-8 left-4 top-8 w-px bg-line transition group-hover:bg-moss/35 sm:left-5"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-4 top-8 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-moss bg-paper shadow-sm sm:left-5"
+                />
+                <div>
+                  <h3 className="text-2xl font-semibold leading-tight text-ink">
+                    {experience.title}
+                  </h3>
+                  <div className="mt-3 space-y-2">
+                    {experience.organization ? (
+                      <p className="flex w-fit items-center gap-2 text-sm font-medium text-moss">
+                        {experience.organization}
+                      </p>
+                    ) : null}
+                    <p className="flex items-center gap-2 text-sm font-medium text-muted">
+                      <CalendarDays aria-hidden="true" className="h-4 w-4" />
+                      {experience.period}
+                    </p>
+                  </div>
                 </div>
-              </div>
+                <ChevronDown
+                  aria-hidden="true"
+                  className="mt-1 h-5 w-5 shrink-0 text-muted transition group-open:rotate-180 group-hover:text-moss"
+                />
+              </summary>
 
               <ul className="mt-6 space-y-4">
                 {experience.bullets.map((item) => (
@@ -137,18 +157,35 @@ export function PortfolioPage() {
                   </li>
                 ))}
               </ul>
-            </article>
+              {experience.organization ? (
+                <a
+                  href={experience.organizationUrl}
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-moss transition hover:text-ink"
+                >
+                  Visit {experience.organization}
+                  <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                </a>
+              ) : null}
+            </details>
           ))}
         </div>
       </Section>
 
-      <Section id="education" title="Education Background">
+      <Section id="education" title="03. Education Background">
         <div className="space-y-4">
           {education.map((item) => (
             <article
               key={`${item.school}-${item.degree}`}
-              className="rounded-lg border border-line bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-moss/40 hover:shadow-soft sm:p-8"
+              className="group relative rounded-lg border border-line bg-white/80 p-6 pl-8 shadow-sm backdrop-blur transition duration-200 hover:-translate-y-1 hover:border-moss/40 hover:bg-white/95 hover:shadow-soft sm:p-8 sm:pl-10"
             >
+              <span
+                aria-hidden="true"
+                className="absolute bottom-8 left-4 top-8 w-px bg-line transition group-hover:bg-moss/35 sm:left-5"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute left-4 top-8 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-moss bg-paper shadow-sm sm:left-5"
+              />
               {item.schoolUrl ? (
                 <a
                   href={item.schoolUrl}
@@ -178,7 +215,7 @@ export function PortfolioPage() {
         </div>
       </Section>
 
-      <Section id="contact" title="Contact">
+      <Section id="contact" title="04. Contact">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {contactLinks.map((link) => {
             const Icon = link.icon;
@@ -187,7 +224,7 @@ export function PortfolioPage() {
               <a
                 key={link.label}
                 href={link.href}
-                className="group flex items-center justify-between rounded-lg border border-line bg-white p-5 text-ink transition hover:-translate-y-1 hover:border-moss/40 hover:shadow-soft"
+                className="group flex items-center justify-between rounded-lg border border-line bg-white/80 p-5 text-ink shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-moss/40 hover:bg-white/95 hover:shadow-soft"
               >
                 <span className="font-medium">{link.label}</span>
                 <Icon

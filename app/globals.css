@@ -17,6 +17,14 @@ html {
 body {
   margin: 0;
   background: #f7f6f2;
+  background-image:
+    linear-gradient(rgba(79, 111, 82, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 111, 82, 0.055) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(34, 33, 31, 0.035), transparent 45%);
+  background-size:
+    44px 44px,
+    44px 44px,
+    100% 100%;
   color: #22211f;
   font-family:
     var(--font-prophet), ui-sans-serif, system-ui, -apple-system,
@@ -31,4 +39,26 @@ a {
 ::selection {
   background: #d7e3d0;
   color: #22211f;
+}
+
+.signal-field {
+  background:
+    linear-gradient(90deg, transparent, rgba(79, 111, 82, 0.1), transparent),
+    linear-gradient(180deg, rgba(247, 246, 242, 0), rgba(247, 246, 242, 0.86));
+}
+
+.typewriter-cursor {
+  animation: cursor-blink 1s steps(2, start) infinite;
+}
+
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-cursor {
+    animation: none;
+  }
 }

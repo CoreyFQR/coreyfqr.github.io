@@ -45,8 +45,7 @@ export const about =
 
 export const experiences: Experience[] = [
   {
-    title:
-      "Millimeter-Wave Radar Point Cloud Enhancement Based on Low-Rank Optimization",
+    title: "Enhancing mmWave Radar Point Clouds via Low-Rank Optimization",
     organization: "Nanyang Technological University",
     organizationUrl: "https://www.ntu.edu.sg/",
     period: "Jan 2025 - Jan 2026",
@@ -58,7 +57,7 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    title: "2D LiDAR SLAM and Path Planning for a Mobile Robot",
+    title: "2D LiDAR SLAM and Route Planning for a Mobile Robot",
     organization: "Technological University Dublin",
     organizationUrl: "https://www.tudublin.ie/",
     period: "Oct 2022 - May 2023",
@@ -96,6 +95,7 @@ export const education: Education[] = [
   },
   {
     school: "Nanjing Tech University",
+    schoolUrl: "https://www.njtech.edu.cn/",
     degree: "Bachelor of Engineering in Mechanical Engineering",
     period: "Sep 2019 - Jul 2023",
     location: "Nanjing, China",
