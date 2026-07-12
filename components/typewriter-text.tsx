@@ -5,9 +5,14 @@ import { useEffect, useState } from "react";
 type TypewriterTextProps = {
   text: string;
   className?: string;
+  startDelay?: number;
 };
 
-export function TypewriterText({ text, className }: TypewriterTextProps) {
+export function TypewriterText({
+  text,
+  className,
+  startDelay = 300,
+}: TypewriterTextProps) {
   const [displayText, setDisplayText] = useState("");
 
   useEffect(() => {
@@ -30,12 +35,12 @@ export function TypewriterText({ text, className }: TypewriterTextProps) {
       }
     };
 
-    timeoutId = window.setTimeout(typeNextCharacter, 300);
+    timeoutId = window.setTimeout(typeNextCharacter, startDelay);
 
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, [text]);
+  }, [startDelay, text]);
 
   return (
     <span className={className} aria-label={text}>

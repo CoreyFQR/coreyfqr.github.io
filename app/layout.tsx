@@ -39,6 +39,38 @@ const prophet = localFont({
   variable: "--font-prophet",
 });
 
+const roboto = localFont({
+  src: [
+    {
+      path: "../Roboto/static/Roboto-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../Roboto/static/Roboto-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../Roboto/static/Roboto-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../Roboto/static/Roboto-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../Roboto/static/Roboto-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+  variable: "--font-roboto",
+});
+
 export const metadata: Metadata = {
   title: "Corey Foo Quan Rui",
   description:
@@ -51,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={prophet.variable}>
+    <html lang="en" className={`${prophet.variable} ${roboto.variable}`}>
       <body>{children}</body>
     </html>
   );
