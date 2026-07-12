@@ -4,6 +4,28 @@
 
 :root {
   color-scheme: light;
+  --color-paper: 247 246 242;
+  --color-surface: 255 255 255;
+  --color-ink: 34 33 31;
+  --color-muted: 111 106 97;
+  --color-line: 222 217 206;
+  --color-moss: 79 111 82;
+  --color-clay: 160 96 69;
+  --color-grid: 79 111 82;
+  --color-shadow: 34 33 31;
+}
+
+html.dark {
+  color-scheme: dark;
+  --color-paper: 13 17 23;
+  --color-surface: 22 27 34;
+  --color-ink: 230 237 243;
+  --color-muted: 139 148 158;
+  --color-line: 48 54 61;
+  --color-moss: 88 166 255;
+  --color-clay: 210 153 34;
+  --color-grid: 139 148 158;
+  --color-shadow: 1 4 9;
 }
 
 * {
@@ -16,16 +38,16 @@ html {
 
 body {
   margin: 0;
-  background: #f7f6f2;
+  background-color: rgb(var(--color-paper));
   background-image:
-    linear-gradient(rgba(79, 111, 82, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79, 111, 82, 0.055) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(34, 33, 31, 0.035), transparent 45%);
+    linear-gradient(rgb(var(--color-grid) / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--color-grid) / 0.055) 1px, transparent 1px),
+    linear-gradient(135deg, rgb(var(--color-ink) / 0.035), transparent 45%);
   background-size:
     44px 44px,
     44px 44px,
     100% 100%;
-  color: #22211f;
+  color: rgb(var(--color-ink));
   font-family:
     var(--font-roboto), ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -46,14 +68,23 @@ a {
 }
 
 ::selection {
-  background: #d7e3d0;
-  color: #22211f;
+  background: rgb(var(--color-moss) / 0.28);
+  color: rgb(var(--color-ink));
 }
 
 .signal-field {
   background:
-    linear-gradient(90deg, transparent, rgba(79, 111, 82, 0.1), transparent),
-    linear-gradient(180deg, rgba(247, 246, 242, 0), rgba(247, 246, 242, 0.86));
+    linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--color-moss) / 0.1),
+      transparent
+    ),
+    linear-gradient(
+      180deg,
+      rgb(var(--color-paper) / 0),
+      rgb(var(--color-paper) / 0.86)
+    );
 }
 
 .typewriter-cursor {

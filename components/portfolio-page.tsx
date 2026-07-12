@@ -18,6 +18,7 @@ import {
 import { IntroOverlay } from "@/components/intro-overlay";
 import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/section";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { TypewriterText } from "@/components/typewriter-text";
 
 export function PortfolioPage() {
@@ -44,16 +45,19 @@ export function PortfolioPage() {
             <a href="#home" className="truncate text-sm font-semibold text-ink">
               {profile.name}
             </a>
-            <div className="hidden items-center gap-6 text-sm text-muted lg:flex">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="transition hover:text-ink"
-                >
-                  {link.label}
-                </a>
-              ))}
+            <div className="flex items-center gap-4">
+              <div className="hidden items-center gap-6 text-sm text-muted lg:flex">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="transition hover:text-ink"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+              <ThemeToggle />
             </div>
           </nav>
         </header>
@@ -63,7 +67,7 @@ export function PortfolioPage() {
         className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-6xl flex-col items-center justify-center px-6 py-16 text-center sm:py-20"
       >
         <div className="flex w-full max-w-4xl flex-col items-center">
-          <div className="relative h-32 w-32 overflow-hidden rounded-full border border-line bg-white shadow-soft ring-8 ring-white/50 sm:h-40 sm:w-40">
+          <div className="relative h-32 w-32 overflow-hidden rounded-full border border-line bg-surface shadow-soft ring-8 ring-surface/50 sm:h-40 sm:w-40">
             <Image
               src={photoSrc}
               alt={profile.photoAlt}
@@ -89,14 +93,14 @@ export function PortfolioPage() {
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <a
                 href="#project-experience"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-moss focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2 focus:ring-offset-paper"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper shadow-soft transition hover:-translate-y-0.5 hover:bg-moss focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2 focus:ring-offset-paper"
               >
-                View Experience
+                View Selected Work
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-medium text-ink transition hover:-translate-y-0.5 hover:border-moss/50 hover:text-moss focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2 focus:ring-offset-paper"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-surface px-6 py-3 text-sm font-medium text-ink transition hover:-translate-y-0.5 hover:border-moss/50 hover:text-moss focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2 focus:ring-offset-paper"
               >
                 Contact
                 <Mail aria-hidden="true" className="h-4 w-4" />
@@ -112,11 +116,11 @@ export function PortfolioPage() {
         </Reveal>
         </Section>
 
-        <Section id="project-experience" title="02. Project Experience">
+        <Section id="project-experience" title="02. Selected Work">
         <div className="space-y-6">
           {experiences.map((experience, index) => (
             <Reveal key={experience.title} delay={index * 90}>
-              <details className="group relative rounded-lg border border-line bg-white/80 p-6 pl-8 shadow-sm backdrop-blur transition duration-200 open:bg-white/95 hover:-translate-y-1 hover:border-moss/40 hover:bg-white/95 hover:shadow-soft sm:p-8 sm:pl-10">
+              <details className="group relative rounded-lg border border-line bg-surface/80 p-6 pl-8 shadow-sm backdrop-blur transition duration-200 open:bg-surface/95 hover:-translate-y-1 hover:border-moss/40 hover:bg-surface/95 hover:shadow-soft sm:p-8 sm:pl-10">
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">
                   <span
                     aria-hidden="true"
@@ -178,7 +182,7 @@ export function PortfolioPage() {
         <div className="space-y-4">
           {education.map((item, index) => (
             <Reveal key={`${item.school}-${item.degree}`} delay={index * 90}>
-              <article className="group relative rounded-lg border border-line bg-white/80 p-6 pl-8 shadow-sm backdrop-blur transition duration-200 hover:-translate-y-1 hover:border-moss/40 hover:bg-white/95 hover:shadow-soft sm:p-8 sm:pl-10">
+              <article className="group relative rounded-lg border border-line bg-surface/80 p-6 pl-8 shadow-sm backdrop-blur transition duration-200 hover:-translate-y-1 hover:border-moss/40 hover:bg-surface/95 hover:shadow-soft sm:p-8 sm:pl-10">
                 <span
                   aria-hidden="true"
                   className="absolute bottom-8 left-4 top-8 w-px bg-line transition group-hover:bg-moss/35 sm:left-5"
@@ -190,13 +194,13 @@ export function PortfolioPage() {
                 {item.schoolUrl ? (
                   <a
                     href={item.schoolUrl}
-                    className="inline-flex items-start gap-2 text-2xl font-semibold leading-tight text-ink transition hover:text-moss"
+                    className="display-font inline-flex items-start gap-2 text-2xl font-semibold leading-tight text-ink transition hover:text-moss"
                   >
                     {item.school}
                     <ExternalLink aria-hidden="true" className="mt-1 h-4 w-4" />
                   </a>
                 ) : (
-                  <h3 className="text-2xl font-semibold leading-tight text-ink">
+                  <h3 className="display-font text-2xl font-semibold leading-tight text-ink">
                     {item.school}
                   </h3>
                 )}
@@ -228,7 +232,7 @@ export function PortfolioPage() {
               <Reveal key={link.label} delay={index * 70}>
                 <a
                   href={link.href}
-                  className="group flex items-center justify-between rounded-lg border border-line bg-white/80 p-5 text-ink shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-moss/40 hover:bg-white/95 hover:shadow-soft"
+                  className="group flex items-center justify-between rounded-lg border border-line bg-surface/80 p-5 text-ink shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-moss/40 hover:bg-surface/95 hover:shadow-soft"
                 >
                   <span className="font-medium">{link.label}</span>
                   <Icon
