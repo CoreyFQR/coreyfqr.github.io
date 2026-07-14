@@ -24,6 +24,7 @@ import { TypewriterText } from "@/components/typewriter-text";
 export function PortfolioPage() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const photoSrc = `${basePath}${profile.photo}`;
+  const logoSrc = `${basePath}/CF.jpg`;
 
   return (
     <main className="relative isolate overflow-hidden">
@@ -42,8 +43,19 @@ export function PortfolioPage() {
             aria-label="Main navigation"
             className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4"
           >
-            <a href="#home" className="truncate text-sm font-semibold text-ink">
-              {profile.name}
+            <a
+              href="#home"
+              aria-label={`${profile.name} home`}
+              className="group inline-flex shrink-0 items-center"
+            >
+              <Image
+                src={logoSrc}
+                alt="CF"
+                width={40}
+                height={40}
+                priority
+                className="h-10 w-10 rounded-md border border-line object-cover shadow-sm transition duration-200 group-hover:-translate-y-0.5 group-hover:border-moss/60 group-hover:shadow-soft"
+              />
             </a>
             <div className="flex items-center gap-4">
               <div className="hidden items-center gap-6 text-sm text-muted lg:flex">
